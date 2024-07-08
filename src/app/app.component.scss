@@ -43,10 +43,10 @@ mat-toolbar, mat-toolbar-row{
         mat-icon{
             margin-right: 16px;
         }
-
-        >a{
-            display: flex;
-            align-items: center;
-        }
     }
+}
+
+.router-container{
+    padding-left: 56px;
+    padding-top: 16px;
 }
