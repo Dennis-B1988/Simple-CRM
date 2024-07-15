@@ -4,6 +4,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
+import { User } from '../models/user.class';
 
 @Component({
   selector: 'app-user',
@@ -16,6 +17,11 @@ export class UserComponent {
 
   above: TooltipPosition = 'above';
   readonly dialog = inject(MatDialog);
+
+  user = new User();
+
+
+  constructor() {}
 
 
   openDialog(): void {
