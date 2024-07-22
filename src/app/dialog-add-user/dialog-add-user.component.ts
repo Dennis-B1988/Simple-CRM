@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
@@ -22,9 +23,21 @@ export class DialogAddUserComponent {
   user = new User();
   birthDate!: Date;
 
+  firestore: Firestore = inject(Firestore);
+
+
+  constructor() { }
+
 
   saveUser(): void {
     this.user.birthDate = this.birthDate.getTime();
     console.log(this.user);
+
+    const usersCollection = collection(this.firestore, 'users');
+    addDoc(usersCollection, this.user.toJSON()).then((result: any) => {
+      console.log(result);
+    }).catch((error: any) => {
+      console.error("Error adding document: ", error);
+    });
   }
 }
