@@ -8,7 +8,7 @@
         <th>Street</th>
       </tr>
       @for (user of allUsers; track $index) {
-        <tr>
+        <tr [routerLink]="['/user/user.id']">
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
           <td>{{ user.birthDate | date: 'dd/MMM/yyyy' }}</td>

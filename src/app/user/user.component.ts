@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
+import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from '../models/user.class';
@@ -13,7 +14,13 @@ import { User } from '../models/user.class';
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [MatIconModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatCardModule, CommonModule],
+  imports: [MatIconModule, 
+            MatButtonModule, 
+            MatTooltipModule, 
+            MatDialogModule, 
+            MatCardModule, 
+            CommonModule, 
+            RouterLink],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })

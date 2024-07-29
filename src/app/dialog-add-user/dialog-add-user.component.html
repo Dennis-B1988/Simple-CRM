@@ -1,6 +1,6 @@
 <div class="dialog-container">
-  @if(loading){
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  @if (loading) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   }
 
   <h2 mat-dialog-title>Add User</h2>
@@ -14,6 +14,13 @@
       <mat-form-field appearance="outline">
         <mat-label>Last name</mat-label>
         <input [disabled]="loading" [(ngModel)]="user.lastName" matInput />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>E-Mail</mat-label>
+        <input [disabled]="loading" [(ngModel)]="user.mail" matInput />
       </mat-form-field>
     </div>
 
@@ -45,7 +52,7 @@
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button [disabled]="loading" mat-button autofocus="false" (click)="saveUser()" cdkFocusInitial>Save</button>
+    <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
     <button mat-button (click)="dialogRef.close()">Cancel</button>
   </mat-dialog-actions>
 </div>
