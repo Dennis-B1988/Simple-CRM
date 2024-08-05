@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,7 +19,7 @@ import { User } from '../models/user.class';
             MatTooltipModule, 
             MatDialogModule, 
             MatCardModule, 
-            CommonModule, 
+            DatePipe, 
             RouterLink],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
