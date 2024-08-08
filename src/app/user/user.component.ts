@@ -27,13 +27,12 @@ import { User } from '../models/user.class';
 export class UserComponent implements OnInit {
 
   above: TooltipPosition = 'above';
-  readonly dialog = inject(MatDialog);
 
   users$: Observable<User[]>;
   allUsers: User[] = [];
 
 
-  constructor(private firestore: Firestore) {
+  constructor(public dialog: MatDialog, private firestore: Firestore) {
     const usersCollection = collection(this.firestore, 'users');
     this.users$ = collectionData(usersCollection, { idField: 'id' }) as Observable<User[]>;
   }

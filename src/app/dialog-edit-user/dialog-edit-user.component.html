@@ -32,24 +32,6 @@
         <mat-datepicker #datepicker></mat-datepicker>
       </mat-form-field>
     </div>
-
-    <div>
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Street + House No.</mat-label>
-        <input [disabled]="loading" [(ngModel)]="user.street" matInput />
-      </mat-form-field>
-    </div>
-
-    <div>
-      <mat-form-field class="mr-16" appearance="outline">
-        <mat-label>Zip code</mat-label>
-        <input [disabled]="loading" [(ngModel)]="user.zipCode" matInput />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>City</mat-label>
-        <input [disabled]="loading" [(ngModel)]="user.city" matInput />
-      </mat-form-field>
-    </div>
   </mat-dialog-content>
   <mat-dialog-actions>
     <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>

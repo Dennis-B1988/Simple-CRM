@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { Component } from '@angular/core';
+import { doc, Firestore, updateDoc } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
@@ -10,44 +10,45 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { User } from '../models/user.class';
 
-
 @Component({
-  selector: 'app-dialog-add-user',
+  selector: 'app-dialog-edit-user',
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [MatDialogModule, 
             MatInputModule, 
             MatFormFieldModule, 
-            MatDatepickerModule, 
-            MatNativeDateModule, 
             MatButtonModule,
             MatProgressBarModule,
-            FormsModule],
-  templateUrl: './dialog-add-user.component.html',
-  styleUrl: './dialog-add-user.component.scss'
+            FormsModule,
+            MatDatepickerModule,
+            MatNativeDateModule,],
+  templateUrl: './dialog-edit-user.component.html',
+  styleUrl: './dialog-edit-user.component.scss'
 })
-export class DialogAddUserComponent {
+export class DialogEditUserComponent {
 
-  user = new User();
+  user: User = new User();
+  userId!: string;
   birthDate!: Date;
   loading = false;
 
-  firestore: Firestore = inject(Firestore);
 
-
-  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) { }
+  constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>, private firestore: Firestore) { }
 
 
   saveUser(): void {
     this.user.birthDate = this.birthDate.getTime();
-    console.log(this.user);
     this.loading = true;
 
-    const usersCollection = collection(this.firestore, 'users');
-    addDoc(usersCollection, this.user.toJSON()).then((result: any) => {
+    const userDocRef = doc(this.firestore, `users/${this.userId}`);
+    const updatedUserData = this.user.toJSON();
+    updateDoc(userDocRef, updatedUserData).then((result: any) => {
       this.loading = false;
       console.log(result);
       this.dialogRef.close();
-    })
+    }).catch(error => {
+      this.loading = false;
+      console.error(error);
+    });
   }
 }
