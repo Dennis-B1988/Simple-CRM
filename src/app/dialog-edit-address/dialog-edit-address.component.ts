@@ -16,7 +16,7 @@ import { User } from '../models/user.class';
             MatFormFieldModule, 
             MatButtonModule,
             MatProgressBarModule,
-            FormsModule],
+            FormsModule,],
   templateUrl: './dialog-edit-address.component.html',
   styleUrl: './dialog-edit-address.component.scss'
 })

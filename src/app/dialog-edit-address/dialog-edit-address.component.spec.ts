@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Firestore } from '@angular/fire/firestore';
+import { MatDialogRef } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogEditAddressComponent } from './dialog-edit-address.component';
 
 describe('DialogEditAddressComponent', () => {
@@ -8,9 +10,12 @@ describe('DialogEditAddressComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DialogEditAddressComponent]
-    })
-    .compileComponents();
+      imports: [DialogEditAddressComponent, BrowserAnimationsModule],
+      providers: [
+        { provide: MatDialogRef, useValue: {} }, 
+        { provide: Firestore, useValue: {} }
+      ]
+    }).compileComponents();
     
     fixture = TestBed.createComponent(DialogEditAddressComponent);
     component = fixture.componentInstance;
