@@ -37,6 +37,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('simple-crm');
+    const span = compiled.querySelector('#appTitle');
+    expect(span?.textContent).toContain('Simple CRM');
   });
 });

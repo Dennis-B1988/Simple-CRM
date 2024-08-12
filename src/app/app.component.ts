@@ -19,6 +19,7 @@ export class AppComponent {
 
   firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
+  by: any;
 
   constructor() {
     const aCollection = collection(this.firestore, 'items')
